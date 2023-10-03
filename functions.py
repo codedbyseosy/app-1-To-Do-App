@@ -1,4 +1,4 @@
-FILEPATH = "todos_item.txt" #constant
+FILEPATH = "/Users/eseoseodion/Documents/Python 2023/Visual Code/GUIS/BUILDING_GUIS/todos.txt" #constant
 
 def get_todos(filepath=FILEPATH): #default argument
     """ Read a text file and return the list 
