@@ -1,10 +1,8 @@
-Make soup.
-Clean the program.
-Buy plants.
-New order.
-We just made a default arg.
-Get the car.
-Buy groceries.
-Master Python!
 Bake a cake.
-Dry hair.
+Rake the garden.
+Practice drawing.
+Clean the house.
+Wash the car.
+Return parcel.
+Go shopping.
+Get groceries.

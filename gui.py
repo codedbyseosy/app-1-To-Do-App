@@ -1,3 +1,4 @@
+#Adding Images
 import functions
 import  PySimpleGUI as sg
 import time
@@ -5,14 +6,23 @@ import time
 sg.theme("Black")
 
 clock = sg.Text('', key='clock')
-label = sg.Text("Type in a to-do") #Text is not a function but a type assocaited with pysimplegu
+
+label = sg.Text("Type in a to-do") #Text is not a function but a type assocaited with pysimplegui
+
 input_box = sg.InputText(tooltip="Enter todo", key="todo") #InputText is not a function but a type assocaited with pysimplegu
-add_button = sg.Button("Add")
+
+add_button = sg.Button(size=2, image_source="/Users/eseoseodion/Documents/Python 2023/Visual Code/GUIS/BUILDING_GUIS edits/add.png", 
+                       mouseover_colors="LightBlue2",
+                       tooltip="Add Todo", key="Add")
+
 list_box = sg.Listbox(values=functions.get_todos(), key="todos", enable_events=True, size=[45, 10]) #todos is the key for this dict, not to be confused
                                                                                                    #with the key for the input box
 edit_button = sg.Button("Edit")
 
-complete_button = sg.Button("Complete")
+complete_button = sg.Button(size=2, image_source="/Users/eseoseodion/Documents/Python 2023/Visual Code/GUIS/BUILDING_GUIS edits/complete.png",
+                            mouseover_colors="LightBlue2",
+                            tooltip="Complete Tip",
+                            key="Complete")
 
 exit_button = sg.Button("Exit")
 
