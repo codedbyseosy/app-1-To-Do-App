@@ -8,8 +8,14 @@ list_box = sg.Listbox(values=functions.get_todos(), key="todos", enable_events=T
                                                                                                    #with the key for the input box
 edit_button = sg.Button("Edit")
 
+complete_button = sg.Button("Complete")
+
+exit_button = sg.Button("Exit")
+
 window = sg.Window('My TO-DO App', 
-                   layout=[[label], [input_box, add_button], [list_box, edit_button]],
+                   layout=[[label], [input_box, add_button], 
+                           [list_box, edit_button, complete_button],
+                           [exit_button]],
                    font=('Helvetica', 20)) #Window is not a function but a type assocaited with pysimplegui, inside the bracket and quotes is an instance of window
 
 
@@ -33,8 +39,8 @@ while True: #this will keep the window open
             window['todos'].update(values=todos) #'[todos]' represents the key for the inputbox, we are updating the Listbox
 
         case "Edit":
-            todo_to_edit = values['todos'][0] #to get the string of the todo selected to be replaced/edited
-            new_todo = values['todo'] #the new todo we want to replace/edit an old todo
+            todo_to_edit = values['todos'][0] #to get the string of the todo selected to be replaced/edited in the Listbox
+            new_todo = values['todo'] #the new todo we want to replace/edit an old todo in the inputbox
 
             todos = functions.get_todos()
             index = todos.index(todo_to_edit) #gives us the index that the user selects
@@ -42,6 +48,18 @@ while True: #this will keep the window open
             functions.write_todos(todos) #write updated lust back into todos.txt
             window['todos'].update(values=todos) #update is a method of the type Listbox. update the Listbox in realtime
                                                  #after editing. '[todos]' represents the key for the Listbox
+
+        case "Complete":
+            todo_to_complete = values['todos'][0] #to get the string of the todo selected to be completed in the Listbox
+
+            todos = functions.get_todos()
+            todos.remove(todo_to_complete) #gives us the index that the user selects
+            functions.write_todos(todos)
+            window['todos'].update(values=todos) #update list to remove completed task from the list box
+            window['todo'].update(value='') #update to remove completed task from the input box
+
+        case "Exit":
+            break
 
         case "todos":
             window['todo'].update(value=values['todos'][0]) #update the current selection as we move through the list
